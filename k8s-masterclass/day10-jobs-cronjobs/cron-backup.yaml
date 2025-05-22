@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: s3-sync
+            image: amazon/aws-cli
+            args: ["s3","sync","/data","s3://backup-bucket"]
+          restartPolicy: OnFailure

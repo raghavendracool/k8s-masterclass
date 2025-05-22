@@ -1,0 +1,2 @@
+resources:
+- ../../day04-deployments/deploy-nginx.yaml

@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: masterclass
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/raghavendracool/k8s-masterclass.git
+    path: day18-capstone-project
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: capstone
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
